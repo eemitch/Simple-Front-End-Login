@@ -1,0 +1,66 @@
+
+
+.eeNote {
+/* 	float: left; */
+	clear: both;
+	margin-bottom: 30px;
+	margin-left: 4%;
+	font-style: italic;
+}
+
+#eeBFEL_Settings {
+	width: 66%;
+	padding-top: 15px;
+	font-size: 110%;
+}
+
+#eeBFEL_Settings h1 {
+	border-bottom: 1px solid #666;
+}
+
+#eeBFEL_Settings fieldset {
+	margin-bottom: 15px;
+	border: 1px solid #868686;
+	padding: 20px;
+	padding-top: 10px;
+	background-color: #e0e0e0;
+}
+
+#eeBFEL_Settings label {
+	float: left;
+	clear: left;
+	width: 33%;
+	text-align: right;
+	margin-right: .5em;
+	padding: 4px;
+	margin-bottom: .25em;
+	background: #d9d9d9;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #5a5a5a;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #5a5a5a;
+}
+#eeBFEL_Settings label.eeBFEL_DenyRoleCheck {
+	width: 25%;
+	clear: none;
+	margin: 0 15px 15px 0;
+}
+ 
+#eeBFEL_Settings input[type=url] {
+	float: left;
+	width: 64%;
+}
+
+#eeBFEL_Save {
+	display: block;
+	margin: 10px auto;
+	padding: 6px 50px;
+	font-size: 130%;
+	
+}
+
+#eeBFEL_Footer p {
+	text-align: center;
+}
