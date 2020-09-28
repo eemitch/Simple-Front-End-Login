@@ -26,12 +26,19 @@ define('eeBFEL_Version', '1.1.1'); // Going from "just for me" to Public
 function eeBFEL_Shortcode( $eeBFEL_Attributes ) {
 	
 	// Shortcode Attributes
-	$eeAtts = shortcode_atts( array('redirect' 	=> site_url() ), $eeBFEL_Attributes );
+	$eeAtts = shortcode_atts( array('redirect' => FALSE), $eeBFEL_Attributes );
 	extract($eeAtts); // Convert into variables
+	
+	// Make sure it's a good URL format
+	if( !filter_var($redirect, FILTER_VALIDATE_URL) ) {
+		$redirect = FALSE;
+	}
     
-    // Get Default Redirect
-   $redirect = get_option('eeBFEL_Redirect');
-   if(!$redirect) { $redirect = site_url(); }
+   // Get Default Redirect
+   if( !$redirect ) {
+	   $redirect = get_option('eeBFEL_Redirect');
+	   if(!$redirect) { $redirect = site_url(); }
+   }
 	
 	// Wordpress Login Form Settings
 	$eeFormArgs = array(
