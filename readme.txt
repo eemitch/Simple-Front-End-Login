@@ -22,7 +22,7 @@ To display the login form, place this shortcode on any page, post, or widget:
 
 After the user has logged in, they will be redirected to your home page or the URL you define in the plugin settings.
 
-To define destinations in additional login forms, use the "redirect" attribute to over-ride the default.
+To define destinations in additional login forms, use the "redirect" attribute to over-ride the default. There is no limit to the number of forms you can use.
 
 [eeBFEL redirect="https://website.com/your-files-page/"]
 

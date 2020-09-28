@@ -5,10 +5,10 @@
  */
 /*
 Plugin Name: Basic Front-End Login
-Plugin URI: https://elementengage.com
-Description: A very simple front-end login form.
+Plugin URI: https://simplefilelist.com/basic-front-end-login/
+Description: A very simple front-end login form which can also disable access to the back-end.
 Author: Mitchell Bennis
-Version: 1.0.2
+Version: 1.1.1
 Author URI: https://elementengage.com
 License: GPLv2 or later
 Text Domain: ee-basic-front-end-login
@@ -19,7 +19,7 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 // Version
-define('eeBFEL_Version', '1.0.2'); // Going from "just for me" to Public
+define('eeBFEL_Version', '1.1.1'); // Going from "just for me" to Public
 
 
 // Function to Display the Login Form
@@ -29,11 +29,9 @@ function eeBFEL_Shortcode( $eeBFEL_Attributes ) {
 	$eeAtts = shortcode_atts( array('redirect' 	=> site_url() ), $eeBFEL_Attributes );
 	extract($eeAtts); // Convert into variables
     
-    // 
-    if( $redirect != site_url() ) {
-	    $redirect = get_option('eeBFEL_Redirect');
-	    if(!$redirect) { $redirect = site_url(); }
-	} 
+    // Get Default Redirect
+   $redirect = get_option('eeBFEL_Redirect');
+   if(!$redirect) { $redirect = site_url(); }
 	
 	// Wordpress Login Form Settings
 	$eeFormArgs = array(
