@@ -47,8 +47,9 @@ No. Any user with the chosen roles will be prevented from viewing the Wordpress 
  
 == Screenshots ==
  
-1. screenshot-1.jpg
-2. screenshot-2.jpg
+1. screenshot-1.png
+2. screenshot-2.png
+3. screenshot-3.png
  
 == Changelog ==
 

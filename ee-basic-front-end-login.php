@@ -15,18 +15,11 @@ Text Domain: ee-basic-front-end-login
 Domain Path: /languages
 */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 // Version
 define('eeBFEL_Version', '1.0.2'); // Going from "just for me" to Public
-
-
-// Variables
-$eeBFEL_DenyAdmin = TRUE; // Deny Dashboard Access
-$eeBFEL_DenyRole = 'subscriber'; // Deny to this Role or Under
-$eeBFEL_Attributes = FALSE; // Login form shortcode attributes
-
 
 
 // Function to Display the Login Form
