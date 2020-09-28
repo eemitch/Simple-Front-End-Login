@@ -5,7 +5,7 @@ Tags: user login
 Requires at least: 5.1
 Tested up to: 5.6
 Requires PHP: 7.2
-Stable tag: 1.0.2
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -52,6 +52,9 @@ No. Any user with the chosen roles will be prevented from viewing the Wordpress 
 3. screenshot-3.png
  
 == Changelog ==
+
+= 1.1.1 =
+* Initial Public Release
 
 = 1.0.2 =
 * Expanded for public distribution.
