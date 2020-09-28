@@ -29,8 +29,6 @@ $eeBFEL_Attributes = FALSE; // Login form shortcode attributes
 
 
 
-
-
 // Function to Display the Login Form
 function eeBFEL_Shortcode( $eeBFEL_Attributes ) {
 	
@@ -81,8 +79,6 @@ add_shortcode( 'eeBFEL', 'eeBFEL_Shortcode' ); // Shotcode: [eeBFEL]
 
 
 
-
-
 // Deny Access to the Back-End to Subscribers
 function eeBFEL_DenyDashbord() {
   
@@ -115,6 +111,13 @@ add_action('init', 'eeBFEL_DenyDashbord');
 
 
 
+// Language Enabler
+function eeBFEL_Textdomain() {
+    load_plugin_textdomain( 'ee-basic-front-end-login', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'init', 'eeBFEL_Textdomain' );
+
+
 
 
 // Front-side <head> Additions
@@ -126,8 +129,6 @@ function eeBFEL_Enqueue() {
 
 }
 add_action( 'wp_enqueue_scripts', 'eeBFEL_Enqueue' );
-
-
 
 
 
@@ -148,7 +149,6 @@ function eeBFEL_AdminHead($eeHook) {
 	}
 }
 add_action('admin_enqueue_scripts', 'eeBFEL_AdminHead');
-
 
 
 
@@ -174,13 +174,21 @@ function eeBFEL_AdminPage() {
 	
 	global $wp_roles;
 	
+	// Makes sure our options are in place
+	if(!get_option('eeBFEL_Redirect')) {
+		update_option('eeBFEL_Redirect', '');
+	}
+	if(!get_option('eeBFEL_DenyRoles')) {
+		update_option('eeBFEL_DenyRoles', 'NO');
+	}
+	
 	if( @$_POST ) {
 		
 		// Security
 		if(check_admin_referer( 'ee-basic-front-end-login', 'ee-basic-front-end-login-nonce')) {
 			
 			$eeBFEL_DenyRoles ='';
-			$eeBFEL_Redirect = filter_var($_POST['eeBFEL_Redirect'], FILTER_VALIDATE_URL);
+			$eeBFEL_Redirect = filter_var(sanitize_text_field($_POST['eeBFEL_Redirect']), FILTER_VALIDATE_URL);
 			
 			if( $eeBFEL_Redirect ) {
 				
@@ -191,7 +199,7 @@ function eeBFEL_AdminPage() {
 				
 				foreach( $_POST['eeBFEL_DenyRoles'] as $key => $role) {
 					
-					$eeBFEL_DenyRoles .= filter_var( strip_tags($role, FILTER_SANITIZE_STRING) ) . ',';
+					$eeBFEL_DenyRoles .= filter_var( sanitize_text_field($role) ) . ',';
 				}
 				
 				$eeBFEL_DenyRoles = substr($eeBFEL_DenyRoles, 0, -1); // Strip last comma
@@ -204,9 +212,6 @@ function eeBFEL_AdminPage() {
 			}
 		}
 	}
-	
-	
-	
 	
 	$eeOutput = '
 	
@@ -272,7 +277,7 @@ function eeBFEL_AdminPage() {
 		
 		<fieldset id="eeBFEL_Footer">
 			<p>Basic Front End Login (Version: ' . eeBFEL_Version . ') | Plugin by <a href="https://elementengage.com" target="_blank">Element Engage, LLC</a><br />
-				Please <a href="#">donate</a> if you find this plugin useful.</p>
+				Please <a href="https://elementengage.com/shop/plugin-donation/">donate</a> if you find this plugin useful.</p>
 		</fieldset>
 	</form>
 	
@@ -282,7 +287,5 @@ function eeBFEL_AdminPage() {
 	echo $eeOutput;
 	
 }
-
-
 
 ?>

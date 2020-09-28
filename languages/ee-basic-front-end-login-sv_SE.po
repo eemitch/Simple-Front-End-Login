@@ -1,0 +1,122 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Project-Id-Version: Basic Front-End Login\n"
+"POT-Creation-Date: 2020-09-27 19:35-0500\n"
+"PO-Revision-Date: 2020-09-27 19:59-0500\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: ee-basic-front-end-login.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Last-Translator: \n"
+"Language: sv_SE\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+
+#: ee-basic-front-end-login.php:50
+msgid "Username"
+msgstr "Användarnamn"
+
+#: ee-basic-front-end-login.php:51
+msgid "Password"
+msgstr "Lösenord"
+
+#: ee-basic-front-end-login.php:52
+msgid "Remember Me"
+msgstr "Kom ihåg mig"
+
+#: ee-basic-front-end-login.php:53
+msgid "Log In"
+msgstr "Logga in"
+
+#: ee-basic-front-end-login.php:66
+msgid "Logout"
+msgstr "Logga ut"
+
+#: ee-basic-front-end-login.php:151
+msgid "Basic Front-End Login Form"
+msgstr "Grundläggande frontend-inloggningsformulär"
+
+#: ee-basic-front-end-login.php:152
+msgid "Login Form"
+msgstr "Inloggningsformulär"
+
+#: ee-basic-front-end-login.php:229
+msgid ""
+"This plugin provides you with a basic front-end login form for any page, "
+"post or widget."
+msgstr ""
+"Detta plugin ger dig ett grundläggande inloggningsformulär för alla sidor, "
+"inlägg eller widgetar."
+
+#: ee-basic-front-end-login.php:229
+msgid "It will also redirect to the page you choose."
+msgstr "Det omdirigeras också till den sida du väljer."
+
+#: ee-basic-front-end-login.php:230
+msgid "It also blocks access to the back-end and hides the Admin Bar."
+msgstr "Det blockerar också åtkomst till backend och döljer Admin Bar."
+
+#: ee-basic-front-end-login.php:231
+msgid ""
+"To display the login form, place this shortcode on any page, post, or widget:"
+msgstr ""
+"För att visa inloggningsformuläret placerar du den här kortkoden på valfri "
+"sida, inlägg eller widget:"
+
+#: ee-basic-front-end-login.php:239
+msgid "Default Login Redirect"
+msgstr "Standardinloggnings omdirigering"
+
+#: ee-basic-front-end-login.php:241
+msgid "After login, go to this page."
+msgstr "Efter inloggning, gå till den här sidan."
+
+#: ee-basic-front-end-login.php:242
+msgid ""
+"You can over-ride this to create multiple login forms by using this "
+"shortcode attribute:"
+msgstr ""
+"Du kan överköra detta för att skapa flera inloggningsformulär genom att "
+"använda detta kortkodsattribut:"
+
+#: ee-basic-front-end-login.php:250
+msgid ""
+"This setting is for when you want your users to be logged-in, but do not "
+"want them to have access to the Wordpress Dashboard."
+msgstr ""
+"Den här inställningen är för när du vill att dina användare ska vara "
+"inloggade, men inte vill att de ska ha tillgång till Wordpress Dashboard."
+
+#: ee-basic-front-end-login.php:261
+msgid ""
+"Checked roles will not see the Admin Bar or be allowed to access the "
+"Dashboard."
+msgstr ""
+"Kontrollerade roller ser inte administratörsfältet eller får åtkomst till "
+"instrumentpanelen."
+
+#. Plugin Name of the plugin/theme
+msgid "Basic Front-End Login"
+msgstr "Grundläggande front-end-inloggning"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://elementengage.com"
+msgstr "https://elementengage.com"
+
+#. Description of the plugin/theme
+msgid "A very simple front-end login form."
+msgstr "En mycket enkel front-end inloggningsformulär."
+
+#. Author of the plugin/theme
+msgid "Mitchell Bennis"
+msgstr "Mitchell Bennis"
