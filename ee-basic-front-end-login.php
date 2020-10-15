@@ -8,7 +8,7 @@ Plugin Name: Basic Front-End Login
 Plugin URI: https://simplefilelist.com/basic-front-end-login/
 Description: A very simple front-end login form which can also disable access to the back-end.
 Author: Mitchell Bennis
-Version: 1.1.1
+Version: 1.1.3
 Author URI: https://elementengage.com
 License: GPLv2 or later
 Text Domain: ee-basic-front-end-login
@@ -19,7 +19,7 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 // Version
-define('eeBFEL_Version', '1.1.1'); // Going from "just for me" to Public
+define('eeBFEL_Version', '1.1.3'); // Going from "just for me" to Public
 
 
 // Function to Display the Login Form
@@ -137,7 +137,7 @@ function eeBFEL_AdminHead($eeHook) {
 	// wp_die($eeHook);
     
     $eeHooks = array(
-    	'settings_page_ee-basic-front-end-login'
+    	'users_page_ee-basic-front-end-login'
     );
     
     if(in_array($eeHook, $eeHooks)) {
@@ -154,13 +154,12 @@ add_action('admin_enqueue_scripts', 'eeBFEL_AdminHead');
 function eeBFEL_AdminMenu() {
 
 	// The Admin Menu
-	add_options_page(
+	add_users_page(
 		__('Basic Front-End Login Form', 'ee-basic-front-end-login'), // Page Title
 		__('Login Form', 'ee-basic-front-end-login'), // Menu Title
-		'activate_plugins', // User status reguired to see the menu
+		'manage_options', // User status reguired to see the menu
 		'ee-basic-front-end-login', // Slug
-		'eeBFEL_AdminPage', // Function that displays the menu page
-		99 // Position
+		'eeBFEL_AdminPage' // Function that displays the menu page
 	);
 }
 add_action( 'admin_menu', 'eeBFEL_AdminMenu' );
@@ -215,7 +214,7 @@ function eeBFEL_AdminPage() {
 	
 	<div class="wrap">
 	
-	<form id="eeBFEL_Settings" action="' . admin_url() . 'options-general.php?page=ee-basic-front-end-login" method="POST">';
+	<form id="eeBFEL_Settings" action="' . admin_url() . 'users.php?page=ee-basic-front-end-login" method="POST">';
 		
 		// Ad Nonce for Security
 		$eeOutput .= wp_nonce_field( 'ee-basic-front-end-login', 'ee-basic-front-end-login-nonce', TRUE, FALSE);	
@@ -230,10 +229,10 @@ function eeBFEL_AdminPage() {
 		
 		<fieldset>
 	
-		<h1>Basic Front-End Login Form</h1>
+		<h1>' . __('Basic Front-End Login Form', 'ee-basic-front-end-login') . '</h1>
 		
 		<p>' . 
-		__('This plugin provides you with a basic front-end login form for any page, post or widget.') . ' ' . __('It will also redirect to the page you choose.') . ' ' .
+		__('This plugin provides you with a basic front-end login form for any page, post or widget.', 'ee-basic-front-end-login') . ' ' . __('It will also redirect to the page you choose.') . ' ' .
 		__('It also blocks access to the back-end and hides the Admin Bar.', 'ee-basic-front-end-login') . ' </p><p>' .
 		__('To display the login form, place this shortcode on any page, post, or widget:', 'ee-basic-front-end-login') . ' <strong>[eeBFEL]</strong>
 		</p>
@@ -241,7 +240,7 @@ function eeBFEL_AdminPage() {
 		</fieldset>
 		<fieldset>
 		
-		<h2>Redirect URL</h2>
+		<h2>' . __('Redirect URL', 'ee-basic-front-end-login') . '</h2>
 		
 		<label for="eeBFEL_Redirect">' . __('Default Login Redirect', 'ee-basic-front-end-login') . '</label>
 		<input placeholder="https://website.com/your-files-page/" type="url" name="eeBFEL_Redirect" value="' . $eeBFEL_Redirect . '" id="eeBFEL_Redirect" size="64" />
@@ -252,7 +251,7 @@ function eeBFEL_AdminPage() {
 		</fieldset>
 		<fieldset>
 		
-		<h2>Restrict Dashboard Access</h2>
+		<h2>' . __('Restrict Dashboard Access', 'ee-basic-front-end-login') . '</h2>
 		
 		<p>' . __('This setting is for when you want your users to be logged-in, but do not want them to have access to the Wordpress Dashboard.', 'ee-basic-front-end-login') . ' </p>';
 		
@@ -270,12 +269,12 @@ function eeBFEL_AdminPage() {
 		</fieldset>
 		
 		<fieldset>
-			<input type="submit"name="eeBFEL_Save" id="eeBFEL_Save" value="SAVE" />
+			<input type="submit"name="eeBFEL_Save" id="eeBFEL_Save" value="' . __('SAVE', 'ee-basic-front-end-login') . '" />
 		</fieldset>
 		
 		<fieldset id="eeBFEL_Footer">
-			<p>Basic Front End Login (Version: ' . eeBFEL_Version . ') | Plugin by <a href="https://elementengage.com" target="_blank">Element Engage, LLC</a><br />
-				Please <a href="https://elementengage.com/shop/plugin-donation/">donate</a> if you find this plugin useful.</p>
+			<p><a href="https://simplefilelist.com/basic-front-end-login/">' . __('Basic Front End Login', 'ee-basic-front-end-login') . '</a> (' . __('Version', 'ee-basic-front-end-login') . ': ' . eeBFEL_Version . ') | ' . __('Plugin by', 'ee-basic-front-end-login') . ' <a href="https://elementengage.com" target="_blank">Element Engage, LLC</a><br />
+				<a href="https://elementengage.com/shop/plugin-donation/">' . __('Please donate if you find this plugin useful.', 'ee-basic-front-end-login') . '</a></p>
 		</fieldset>
 	</form>
 	
