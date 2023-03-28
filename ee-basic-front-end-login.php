@@ -1,14 +1,14 @@
 <?php
 
 /**
- * @package Basic Front-End Login
+ * @package Simple Front-End Login
  */
 /*
-Plugin Name: Basic Front-End Login
+Plugin Name: Simple Front-End Login
 Plugin URI: https://simplefilelist.com/basic-front-end-login/
 Description: A very simple front-end login form which can also disable access to the back-end.
 Author: Mitchell Bennis
-Version: 1.1.3
+Version: 1.1.4
 Author URI: https://elementengage.com
 License: GPLv2 or later
 Text Domain: ee-basic-front-end-login
@@ -19,7 +19,7 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 // Version
-define('eeBFEL_Version', '1.1.3'); // Going from "just for me" to Public
+define('eeBFEL_Version', '1.1.4'); // Going from "just for me" to Public
 
 
 // Function to Display the Login Form
