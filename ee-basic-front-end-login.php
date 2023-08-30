@@ -26,19 +26,18 @@ define('eeBFEL_Version', '1.2.1'); // Going from "just for me" to Public
 function eeBFEL_Shortcode( $eeBFEL_Attributes ) {
 	
 	// Shortcode Attributes
-	$eeAtts = shortcode_atts( array('redirect' => FALSE), $eeBFEL_Attributes );
+	$eeAtts = shortcode_atts( array( 'redirect' => site_url() ), $eeBFEL_Attributes );
 	extract($eeAtts); // Convert into variables
 	
 	// Make sure it's a good URL format
-	if( !filter_var($redirect, FILTER_VALIDATE_URL) ) {
-		$redirect = FALSE;
+	if( !filter_var($redirect, FILTER_VALIDATE_URL) ) { // Get the passed url
+		
+		$redirect = get_option('eeBFEL_Redirect'); // Get the saved URL
+		
+		if(!filter_var($redirect, FILTER_VALIDATE_URL)) {
+			$redirect = FALSE;
+		}
 	}
-    
-   // Get Default Redirect
-   if( !$redirect ) {
-	   $redirect = get_option('eeBFEL_Redirect');
-	   if(!$redirect) { $redirect = site_url(); }
-   }
 	
 	// Wordpress Login Form Settings
 	$eeFormArgs = array(
@@ -58,18 +57,17 @@ function eeBFEL_Shortcode( $eeBFEL_Attributes ) {
         'value_remember' => false
     );
     
-    if( get_current_user_id() ) {
-	    
-	    // Show a Logout Link
-	    $eeOutput = '<a href="' . wp_logout_url() . '">' . __('Logout', 'ee-basic-front-end-login') . '</a>';
+    if (get_current_user_id()) {
+		
+		// Show a Logout Link
+		$eeOutput = '<a href="' . wp_logout_url() . '">' . __('Logout', 'ee-basic-front-end-login') . '</a>';
 	
 	} else {
-	    
-	    // Show the form
+		
+		// Get the login form
 		$eeOutput = wp_login_form($eeFormArgs);
 	}
 	
-	// Return the form
 	return $eeOutput;
 }
 add_shortcode( 'eeBFEL', 'eeBFEL_Shortcode' ); // Shotcode: [eeBFEL]
@@ -155,7 +153,7 @@ function eeBFEL_AdminMenu() {
 	add_users_page(
 		__('Basic Front-End Login Form', 'ee-basic-front-end-login'), // Page Title
 		__('Login Form', 'ee-basic-front-end-login'), // Menu Title
-		'manage_options', // User status reguired to see the menu
+		'manage_options', // User status required to see the menu
 		'ee-basic-front-end-login', // Slug
 		'eeBFEL_AdminPage' // Function that displays the menu page
 	);
@@ -171,10 +169,8 @@ function eeBFEL_AdminPage() {
 	global $wp_roles;
 	
 	// Default values
-	$eeBFEL_Redirect = get_option('eeBFEL_Redirect', '');
-	$eeBFEL_DenyRoles = get_option('eeBFEL_DenyRoles', 'NO');
-	
-	
+	$eeBFEL_Redirect = get_option('eeBFEL_Redirect');
+	$eeBFEL_DenyRoles = get_option('eeBFEL_DenyRoles');
 
 	// Check if POST data has been sent
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -222,7 +218,15 @@ function eeBFEL_AdminPage() {
 				<tr valign="top">
 					<th scope="row">Redirect URL</th>
 					<td>
-						<input type="text" name="eeBFEL_Redirect" value="<?php echo esc_attr($eeBFEL_Redirect); ?>" />
+						<input type="text" name="eeBFEL_Redirect" value="<?php 
+						
+						if($eeBFEL_Redirect) {
+							echo esc_attr($eeBFEL_Redirect);
+						} else {
+							echo site_url();
+						}
+						
+						?>" />
 					</td>
 				</tr>
 				
