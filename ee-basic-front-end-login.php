@@ -8,7 +8,7 @@ Plugin Name: Simple Front-End Login
 Plugin URI: https://simplefilelist.com/basic-front-end-login/
 Description: A very simple front-end login form which can also disable access to the back-end.
 Author: Mitchell Bennis
-Version: 1.1.4
+Version: 1.2.1
 Author URI: https://elementengage.com
 License: GPLv2 or later
 Text Domain: ee-basic-front-end-login
@@ -19,7 +19,7 @@ if( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 // Version
-define('eeBFEL_Version', '1.1.4'); // Going from "just for me" to Public
+define('eeBFEL_Version', '1.2.1'); // Going from "just for me" to Public
 
 
 // Function to Display the Login Form
@@ -149,11 +149,9 @@ function eeBFEL_AdminHead($eeHook) {
 add_action('admin_enqueue_scripts', 'eeBFEL_AdminHead');
 
 
-
-// Admin Menu
+// The Admin Menu
 function eeBFEL_AdminMenu() {
 
-	// The Admin Menu
 	add_users_page(
 		__('Basic Front-End Login Form', 'ee-basic-front-end-login'), // Page Title
 		__('Login Form', 'ee-basic-front-end-login'), // Menu Title
@@ -162,6 +160,7 @@ function eeBFEL_AdminMenu() {
 		'eeBFEL_AdminPage' // Function that displays the menu page
 	);
 }
+
 add_action( 'admin_menu', 'eeBFEL_AdminMenu' );
 
 
@@ -171,118 +170,82 @@ function eeBFEL_AdminPage() {
 	
 	global $wp_roles;
 	
-	// Makes sure our options are in place
-	if(!get_option('eeBFEL_Redirect')) {
-		update_option('eeBFEL_Redirect', '');
-	}
-	if(!get_option('eeBFEL_DenyRoles')) {
-		update_option('eeBFEL_DenyRoles', 'NO');
-	}
+	// Default values
+	$eeBFEL_Redirect = get_option('eeBFEL_Redirect', '');
+	$eeBFEL_DenyRoles = get_option('eeBFEL_DenyRoles', 'NO');
 	
-	if( @$_POST ) {
+	
+
+	// Check if POST data has been sent
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
-		// Security
-		if(check_admin_referer( 'ee-basic-front-end-login', 'ee-basic-front-end-login-nonce')) {
+		// Check nonce for security
+		if (check_admin_referer('ee-basic-front-end-login', 'ee-basic-front-end-login-nonce')) {
 			
-			$eeBFEL_DenyRoles ='';
-			$eeBFEL_Redirect = filter_var(sanitize_text_field($_POST['eeBFEL_Redirect']), FILTER_VALIDATE_URL);
+			$eeBFEL_DenyRoles = '';
 			
-			if( $eeBFEL_Redirect ) {
+			if (isset($_POST['eeBFEL_Redirect'])) {
+				$eeBFEL_Redirect = esc_url_raw($_POST['eeBFEL_Redirect']); // Use esc_url_raw for saving URLs to the database
 				
-				update_option('eeBFEL_Redirect', $eeBFEL_Redirect);
+				if (wp_http_validate_url($eeBFEL_Redirect)) { // WordPress URL validation function
+					update_option('eeBFEL_Redirect', $eeBFEL_Redirect);
+				} else {
+					// Display error message if URL is not valid
+					echo '<div class="error"><p>Invalid redirect URL provided.</p></div>';
+				}
 			}
 			
-			if(@is_array(@$_POST['eeBFEL_DenyRoles'])) {
-				
-				foreach( $_POST['eeBFEL_DenyRoles'] as $key => $role) {
-					
-					$eeBFEL_DenyRoles .= filter_var( sanitize_text_field($role) ) . ',';
+			if (isset($_POST['eeBFEL_DenyRoles']) && is_array($_POST['eeBFEL_DenyRoles'])) {
+				foreach ($_POST['eeBFEL_DenyRoles'] as $key => $role) {
+					$eeBFEL_DenyRoles .= sanitize_text_field($role) . ',';
 				}
-				
-				$eeBFEL_DenyRoles = substr($eeBFEL_DenyRoles, 0, -1); // Strip last comma
-				
+				$eeBFEL_DenyRoles = trim($eeBFEL_DenyRoles, ','); // Strip last comma
 				update_option('eeBFEL_DenyRoles', $eeBFEL_DenyRoles); // Store the string
-				
 			} else {
-				
 				update_option('eeBFEL_DenyRoles', 'NO'); // Don't hide the back-end
 			}
+			
+		} else {
+			// Display error message if nonce verification fails
+			echo '<div class="error"><p>Nonce verification failed. Please try again.</p></div>';
 		}
 	}
 	
-	$eeOutput = '
-	
+	// Display the form
+	?>
 	<div class="wrap">
-	
-	<form id="eeBFEL_Settings" action="' . admin_url() . 'users.php?page=ee-basic-front-end-login" method="POST">';
-		
-		// Ad Nonce for Security
-		$eeOutput .= wp_nonce_field( 'ee-basic-front-end-login', 'ee-basic-front-end-login-nonce', TRUE, FALSE);	
-		
-		$eeBFEL_Redirect = get_option('eeBFEL_Redirect');
-		
-		$eeBFEL_DenyRoles = get_option('eeBFEL_DenyRoles');
-		$eeBFEL_DenyRoles = explode(',', $eeBFEL_DenyRoles);
+		<h1>Basic Front-End Login Settings</h1>
+		<form method="post">
+			<?php wp_nonce_field('ee-basic-front-end-login', 'ee-basic-front-end-login-nonce'); ?>
+
+			<table class="form-table">
+				<tr valign="top">
+					<th scope="row">Redirect URL</th>
+					<td>
+						<input type="text" name="eeBFEL_Redirect" value="<?php echo esc_attr($eeBFEL_Redirect); ?>" />
+					</td>
+				</tr>
+				
+				<tr valign="top">
+					<th scope="row">Deny Access to Roles</th>
+					<td>
+						<?php 
+						foreach ($wp_roles->roles as $role_slug => $role) {
+							if(esc_attr($role_slug != 'administrator')) {
+								echo '<label><input type="checkbox" name="eeBFEL_DenyRoles[]" value="' . esc_attr($role_slug) . '" ' . (in_array($role_slug, explode(',', $eeBFEL_DenyRoles)) ? 'checked="checked"' : '') . ' /> ' . esc_html($role['name']) . '</label><br />';
+							}
+						}
+						?>
+					</td>
+				</tr>
+			</table>
 			
-		// Form HTML
-		$eeOutput .= '
-		
-		<fieldset>
-	
-		<h1>' . __('Basic Front-End Login Form', 'ee-basic-front-end-login') . '</h1>
-		
-		<p>' . 
-		__('This plugin provides you with a basic front-end login form for any page, post or widget.', 'ee-basic-front-end-login') . ' ' . __('It will also redirect to the page you choose.') . ' ' .
-		__('It also blocks access to the back-end and hides the Admin Bar.', 'ee-basic-front-end-login') . ' </p><p>' .
-		__('To display the login form, place this shortcode on any page, post, or widget:', 'ee-basic-front-end-login') . ' <strong>[eeBFEL]</strong>
-		</p>
-		
-		</fieldset>
-		<fieldset>
-		
-		<h2>' . __('Redirect URL', 'ee-basic-front-end-login') . '</h2>
-		
-		<label for="eeBFEL_Redirect">' . __('Default Login Redirect', 'ee-basic-front-end-login') . '</label>
-		<input placeholder="https://website.com/your-files-page/" type="url" name="eeBFEL_Redirect" value="' . $eeBFEL_Redirect . '" id="eeBFEL_Redirect" size="64" />
-		<div class="eeNote">' . __('After login, go to this page.', 'ee-basic-front-end-login') . '<br />' .
-		__('You can over-ride this to create multiple login forms by using this shortcode attribute:', 'ee-basic-front-end-login') . '<br/>
-		[eeBFEL redirect="https://website.com/your-files-page/"]</div>
-		
-		</fieldset>
-		<fieldset>
-		
-		<h2>' . __('Restrict Dashboard Access', 'ee-basic-front-end-login') . '</h2>
-		
-		<p>' . __('This setting is for when you want your users to be logged-in, but do not want them to have access to the Wordpress Dashboard.', 'ee-basic-front-end-login') . ' </p>';
-		
-		foreach( $wp_roles->roles as $eeRole => $eeRoleObject ) {
-			if($eeRole != 'administrator') {
-				$eeOutput .= '<label class="eeBFEL_DenyRoleCheck">'  . ucwords($eeRole) . ': <input type="checkbox" name="eeBFEL_DenyRoles[]" value="' . $eeRole . '"';
-				if(in_array($eeRole, $eeBFEL_DenyRoles)) { $eeOutput .= ' checked="checked"'; }
-				$eeOutput .= '/></label>';
-			}
-		}
-			
-		$eeOutput .= '
-		<div class="eeNote">' . __('Checked roles will not see the Admin Bar or be allowed to access the Dashboard.', 'ee-basic-front-end-login') . '</div>
-		
-		</fieldset>
-		
-		<fieldset>
-			<input type="submit"name="eeBFEL_Save" id="eeBFEL_Save" value="' . __('SAVE', 'ee-basic-front-end-login') . '" />
-		</fieldset>
-		
-		<fieldset id="eeBFEL_Footer">
-			<p><a href="https://simplefilelist.com/basic-front-end-login/">' . __('Basic Front End Login', 'ee-basic-front-end-login') . '</a> (' . __('Version', 'ee-basic-front-end-login') . ': ' . eeBFEL_Version . ') | ' . __('Plugin by', 'ee-basic-front-end-login') . ' <a href="https://elementengage.com" target="_blank">Element Engage, LLC</a><br />
-				<a href="https://elementengage.com/shop/plugin-donation/">' . __('Please donate if you find this plugin useful.', 'ee-basic-front-end-login') . '</a></p>
-		</fieldset>
-	</form>
-	
-	</div>';
-	
-	
-	echo $eeOutput;
-	
+			<?php submit_button(); ?>
+		</form>
+	</div>
+	<?php
 }
+
+
 
 ?>
