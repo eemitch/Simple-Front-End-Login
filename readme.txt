@@ -73,7 +73,11 @@ If users return to the login page, a "Log Out" link will appear. You can also ad
 == Changelog ==
 
 = 1.2.1 =
-* 
+* Added Copy-to-Clipboard function for the shortcode string
+* Added Check All / Uncheck All to the Restriction options
+* Updated security
+* Updated code base
+* Renamed back to Basic Front-End Login
 
 = 1.1.4 = 
 * Renamed the Plugin from Basic Front-End Login to Simple Front-End Login
