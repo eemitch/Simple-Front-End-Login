@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @package Simple Front-End Login
+ * @package Basic Front-End Login
  */
 /*
-Plugin Name: Simple Front-End Login
+Plugin Name: Basic Front-End Login
 Plugin URI: https://simplefilelist.com/basic-front-end-login/
 Description: A very simple front-end login form which can also disable access to the back-end.
 Author: Mitchell Bennis
@@ -181,15 +181,26 @@ function eeBFEL_AdminPage() {
 			$eeBFEL_DenyRoles = '';
 			
 			if (isset($_POST['eeBFEL_Redirect'])) {
+				
 				$eeBFEL_Redirect = esc_url_raw($_POST['eeBFEL_Redirect']); // Use esc_url_raw for saving URLs to the database
 				
 				if (wp_http_validate_url($eeBFEL_Redirect)) { // WordPress URL validation function
+					
 					update_option('eeBFEL_Redirect', $eeBFEL_Redirect);
+				
+				} elseif(!$eeBFEL_Redirect) {
+				
+					delete_option('eeBFEL_Redirect');
+					
 				} else {
-					// Display error message if URL is not valid
+					
 					echo '<div class="error"><p>Invalid redirect URL provided.</p></div>';
 				}
-			}
+			} else {
+					
+				delete_option('eeBFEL_Redirect');
+					
+			} 
 			
 			if (isset($_POST['eeBFEL_DenyRoles']) && is_array($_POST['eeBFEL_DenyRoles'])) {
 				foreach ($_POST['eeBFEL_DenyRoles'] as $key => $role) {

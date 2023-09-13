@@ -1,4 +1,4 @@
-=== Simple Front-End Login ===
+=== Basic Front-End Login ===
 Contributors: eemitch
 Donate link: https://elementengage.com/shop/plugin-donation/
 Tags: user login, login form, login redirect, no Admin bar, no dashboard
