@@ -1,0 +1,22 @@
+#eeBFEL_LogoutButton {
+	position: fixed;
+	bottom: 20px;
+	right: 30px;
+	z-index: 9999;
+}
+
+#eeBFEL_LogoutButton a.button {
+	display: inline-block;
+	background-color: #bebebe;
+	color: #fff;
+	padding: 10px 20px;
+	text-decoration: none;
+	font-size: 14px;
+	border-radius: 5px;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	transition: background-color 0.3s ease;
+}
+
+#eeBFEL_LogoutButton a.button:hover {
+	background-color: #8b99a1;
+}

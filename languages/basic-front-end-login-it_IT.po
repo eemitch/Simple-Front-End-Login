@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Basic Front-End Login\n"
-"POT-Creation-Date: 2020-10-15 11:44-0500\n"
-"PO-Revision-Date: 2020-10-15 11:50-0500\n"
+"POT-Creation-Date: 2024-10-22 14:44-0500\n"
+"PO-Revision-Date: 2024-10-22 14:47-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: ee-basic-front-end-login.php\n"
@@ -21,35 +21,43 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: ee-basic-front-end-login.php:48
-msgid "Username"
-msgstr "Nome utente"
+#: includes/ee-functions.php:21
+msgid "Log out of this website"
+msgstr "Uscire da questo sito web"
 
-#: ee-basic-front-end-login.php:49
-msgid "Password"
-msgstr "Password"
-
-#: ee-basic-front-end-login.php:50
-msgid "Remember Me"
-msgstr "Ricordami"
-
-#: ee-basic-front-end-login.php:51
-msgid "Log In"
-msgstr "Accedi"
-
-#: ee-basic-front-end-login.php:64
-msgid "Logout"
+#: includes/ee-functions.php:22
+msgid "Log Out"
 msgstr "Esci"
 
-#: ee-basic-front-end-login.php:158 ee-basic-front-end-login.php:232
+#: includes/ee-functions.php:39 includes/ee-functions.php:241
 msgid "Basic Front-End Login Form"
 msgstr "Modulo di accesso di base per il Front-End"
 
-#: ee-basic-front-end-login.php:159
+#: includes/ee-functions.php:40
 msgid "Login Form"
 msgstr "Modulo di Login"
 
-#: ee-basic-front-end-login.php:235
+#: includes/ee-functions.php:102
+msgid "Username"
+msgstr "Nome utente"
+
+#: includes/ee-functions.php:103
+msgid "Password"
+msgstr "Password"
+
+#: includes/ee-functions.php:104
+msgid "Remember Me"
+msgstr "Ricordami"
+
+#: includes/ee-functions.php:105
+msgid "Log In"
+msgstr "Accedi"
+
+#: includes/ee-functions.php:118
+msgid "Logout"
+msgstr "Esci"
+
+#: includes/ee-functions.php:244
 msgid ""
 "This plugin provides you with a basic front-end login form for any page, "
 "post or widget."
@@ -57,34 +65,54 @@ msgstr ""
 "Questo plugin fornisce un modulo di login di base per qualsiasi pagina, post "
 "o widget."
 
-#: ee-basic-front-end-login.php:235
+#: includes/ee-functions.php:244
 msgid "It will also redirect to the page you choose."
 msgstr "Verrà anche reindirizzato alla pagina scelta."
 
-#: ee-basic-front-end-login.php:236
+#: includes/ee-functions.php:245
 msgid "It also blocks access to the back-end and hides the Admin Bar."
 msgstr "Blocca anche l'accesso al back-end e nasconde l'Admin Bar."
 
-#: ee-basic-front-end-login.php:237
+#: includes/ee-functions.php:246
 msgid ""
 "To display the login form, place this shortcode on any page, post, or widget:"
 msgstr ""
 "Per visualizzare il modulo di login, inserire questo codice di collegamento "
 "in qualsiasi pagina, post o widget:"
 
-#: ee-basic-front-end-login.php:243
+#: includes/ee-functions.php:250
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: includes/ee-functions.php:251
+msgid "Shortcode for the login form"
+msgstr "Shortcode per il modulo di login"
+
+#: includes/ee-functions.php:252
+msgid "Copy shortcode to clipboard"
+msgstr "Copiare il codice breve negli appunti"
+
+#: includes/ee-functions.php:252
+msgid "Copy Shortcode"
+msgstr "Shortcode"
+
+#: includes/ee-functions.php:259
+msgid "Options"
+msgstr "Opzioni"
+
+#: includes/ee-functions.php:261 includes/ee-functions.php:263
 msgid "Redirect URL"
 msgstr "URL di rendirizzamento"
 
-#: ee-basic-front-end-login.php:245
-msgid "Default Login Redirect"
-msgstr "Redirect di accesso predefinito"
+#: includes/ee-functions.php:265
+msgid ""
+"After login, go to this page. You can override this by using the "
+"\"redirect\" attribute in the shortcode."
+msgstr ""
+"Dopo l'accesso, si accede a questa pagina. È possibile annullare questa "
+"impostazione utilizzando l'attributo \"redirect\" nel codice breve."
 
-#: ee-basic-front-end-login.php:247
-msgid "After login, go to this page."
-msgstr "Dopo il login, vai a questa pagina."
-
-#: ee-basic-front-end-login.php:248
+#: includes/ee-functions.php:266
 msgid ""
 "You can over-ride this to create multiple login forms by using this "
 "shortcode attribute:"
@@ -92,11 +120,15 @@ msgstr ""
 "È possibile sovrascriverlo per creare più moduli di login utilizzando questo "
 "attributo shortcode:"
 
-#: ee-basic-front-end-login.php:254
+#: includes/ee-functions.php:271
 msgid "Restrict Dashboard Access"
 msgstr "Limitare l'accesso al cruscotto"
 
-#: ee-basic-front-end-login.php:256
+#: includes/ee-functions.php:273
+msgid "Select roles that should be denied access to the Dashboard."
+msgstr "Selezionare i ruoli a cui deve essere negato l'accesso al Dashboard."
+
+#: includes/ee-functions.php:273
 msgid ""
 "This setting is for when you want your users to be logged-in, but do not "
 "want them to have access to the Wordpress Dashboard."
@@ -104,37 +136,64 @@ msgstr ""
 "Questa impostazione è per quando si desidera che i propri utenti siano "
 "collegati, ma non si desidera che abbiano accesso al cruscotto di Wordpress."
 
-#: ee-basic-front-end-login.php:267
-msgid ""
-"Checked roles will not see the Admin Bar or be allowed to access the "
-"Dashboard."
+#: includes/ee-functions.php:287
+msgid "Check all roles"
+msgstr "Controllare tutti i ruoli"
+
+#: includes/ee-functions.php:287
+msgid "Check All"
+msgstr "Seleziona Tutti"
+
+#: includes/ee-functions.php:288
+msgid "Uncheck all roles"
+msgstr "Deselezionare tutti i ruoli"
+
+#: includes/ee-functions.php:288
+msgid "Uncheck All"
+msgstr "Deseleziona Tutti"
+
+#: includes/ee-functions.php:291
+msgid "Selected roles will not see the Admin Bar or access the Dashboard."
 msgstr ""
-"I ruoli controllati non vedranno l'Admin Bar o non potranno accedere al "
-"Dashboard."
+"I ruoli selezionati non vedranno la barra di amministrazione e non "
+"accederanno alla dashboard."
 
-#: ee-basic-front-end-login.php:272
-msgid "SAVE"
-msgstr "SALVA"
+#: includes/ee-functions.php:295
+msgid "Logout Button"
+msgstr "Pulsante logout"
 
-#: ee-basic-front-end-login.php:276
-msgid "Basic Front End Login"
-msgstr "Login di base per la parte anteriore"
+#: includes/ee-functions.php:299
+msgid "Show Logout Button"
+msgstr "Mostra il pulsante di logout"
 
-#: ee-basic-front-end-login.php:276
+#: includes/ee-functions.php:303
+msgid ""
+"Show a \"Log Out\" button at the bottom-right corner of each page for logged-"
+"in users."
+msgstr ""
+"Mostrare un pulsante \"Esci\" nell'angolo inferiore destro di ogni pagina "
+"per gli utenti connessi."
+
+#: includes/ee-functions.php:310
+msgid "Save Settings"
+msgstr "Salva Impostazioni"
+
+#: includes/ee-functions.php:310
+msgid "Save form settings"
+msgstr "Salvare le impostazioni del modulo"
+
+#. Plugin Name of the plugin/theme
+#: includes/ee-functions.php:314
+msgid "Basic Front-End Login"
+msgstr "Login di base per il Front-End"
+
+#: includes/ee-functions.php:315
 msgid "Version"
 msgstr "Versione"
 
-#: ee-basic-front-end-login.php:276
+#: includes/ee-functions.php:315
 msgid "Plugin by"
 msgstr "Plugin di"
-
-#: ee-basic-front-end-login.php:277
-msgid "Please donate if you find this plugin useful."
-msgstr "Si prega di donare se trovate utile questo plugin."
-
-#. Plugin Name of the plugin/theme
-msgid "Basic Front-End Login"
-msgstr "Login di base per il Front-End"
 
 #. Plugin URI of the plugin/theme
 msgid "https://simplefilelist.com/basic-front-end-login/"
@@ -155,3 +214,18 @@ msgstr "Mitchell Bennis"
 #. Author URI of the plugin/theme
 msgid "https://elementengage.com"
 msgstr "https://elementengage.com"
+
+#~ msgid "Default Login Redirect"
+#~ msgstr "Redirect di accesso predefinito"
+
+#~ msgid "After login, go to this page."
+#~ msgstr "Dopo il login, vai a questa pagina."
+
+#~ msgid "SAVE"
+#~ msgstr "SALVA"
+
+#~ msgid "Basic Front End Login"
+#~ msgstr "Login di base per la parte anteriore"
+
+#~ msgid "Please donate if you find this plugin useful."
+#~ msgstr "Si prega di donare se trovate utile questo plugin."

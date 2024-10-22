@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Basic Front-End Login\n"
-"POT-Creation-Date: 2020-10-15 11:44-0500\n"
-"PO-Revision-Date: 2020-10-15 11:50-0500\n"
+"POT-Creation-Date: 2024-10-22 14:44-0500\n"
+"PO-Revision-Date: 2024-10-22 14:46-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: ee-basic-front-end-login.php\n"
@@ -21,35 +21,43 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: ee-basic-front-end-login.php:48
-msgid "Username"
-msgstr "Gebruikersnaam"
+#: includes/ee-functions.php:21
+msgid "Log out of this website"
+msgstr "Afmelden van deze website"
 
-#: ee-basic-front-end-login.php:49
-msgid "Password"
-msgstr "Wachtwoord"
-
-#: ee-basic-front-end-login.php:50
-msgid "Remember Me"
-msgstr "Onthoud mij"
-
-#: ee-basic-front-end-login.php:51
-msgid "Log In"
-msgstr "Inloggen"
-
-#: ee-basic-front-end-login.php:64
-msgid "Logout"
+#: includes/ee-functions.php:22
+msgid "Log Out"
 msgstr "Uitloggen"
 
-#: ee-basic-front-end-login.php:158 ee-basic-front-end-login.php:232
+#: includes/ee-functions.php:39 includes/ee-functions.php:241
 msgid "Basic Front-End Login Form"
 msgstr "Basis voorblad-aanmeldingsformulier"
 
-#: ee-basic-front-end-login.php:159
+#: includes/ee-functions.php:40
 msgid "Login Form"
 msgstr "Toon loginformulier"
 
-#: ee-basic-front-end-login.php:235
+#: includes/ee-functions.php:102
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: includes/ee-functions.php:103
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: includes/ee-functions.php:104
+msgid "Remember Me"
+msgstr "Onthoud mij"
+
+#: includes/ee-functions.php:105
+msgid "Log In"
+msgstr "Inloggen"
+
+#: includes/ee-functions.php:118
+msgid "Logout"
+msgstr "Uitloggen"
+
+#: includes/ee-functions.php:244
 msgid ""
 "This plugin provides you with a basic front-end login form for any page, "
 "post or widget."
@@ -57,35 +65,55 @@ msgstr ""
 "Deze plugin biedt u een eenvoudig front-end loginformulier voor elke pagina, "
 "post of widget."
 
-#: ee-basic-front-end-login.php:235
+#: includes/ee-functions.php:244
 msgid "It will also redirect to the page you choose."
 msgstr "Het zal ook doorverwijzen naar de pagina die u kiest."
 
-#: ee-basic-front-end-login.php:236
+#: includes/ee-functions.php:245
 msgid "It also blocks access to the back-end and hides the Admin Bar."
 msgstr ""
 "Het blokkeert ook de toegang tot de achterkant en verbergt de Admin Bar."
 
-#: ee-basic-front-end-login.php:237
+#: includes/ee-functions.php:246
 msgid ""
 "To display the login form, place this shortcode on any page, post, or widget:"
 msgstr ""
 "Om het inlogformulier weer te geven, plaatst u deze shortcode op een "
 "willekeurige pagina, post of widget:"
 
-#: ee-basic-front-end-login.php:243
+#: includes/ee-functions.php:250
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: includes/ee-functions.php:251
+msgid "Shortcode for the login form"
+msgstr "Shortcode voor het aanmeldformulier"
+
+#: includes/ee-functions.php:252
+msgid "Copy shortcode to clipboard"
+msgstr "Kopieer shortcode naar klembord"
+
+#: includes/ee-functions.php:252
+msgid "Copy Shortcode"
+msgstr "Kopieer shortcode"
+
+#: includes/ee-functions.php:259
+msgid "Options"
+msgstr "Opties"
+
+#: includes/ee-functions.php:261 includes/ee-functions.php:263
 msgid "Redirect URL"
 msgstr "Omleidings-URL"
 
-#: ee-basic-front-end-login.php:245
-msgid "Default Login Redirect"
-msgstr "Standaard login redirect"
+#: includes/ee-functions.php:265
+msgid ""
+"After login, go to this page. You can override this by using the "
+"\"redirect\" attribute in the shortcode."
+msgstr ""
+"Ga na het inloggen naar deze pagina. Je kunt dit opheffen door het attribuut "
+"\"redirect\" in de shortcode te gebruiken."
 
-#: ee-basic-front-end-login.php:247
-msgid "After login, go to this page."
-msgstr "Ga na het inloggen naar deze pagina."
-
-#: ee-basic-front-end-login.php:248
+#: includes/ee-functions.php:266
 msgid ""
 "You can over-ride this to create multiple login forms by using this "
 "shortcode attribute:"
@@ -93,11 +121,15 @@ msgstr ""
 "U kunt dit overschrijven om meerdere aanmeldingsformulieren aan te maken "
 "door gebruik te maken van dit shortcode-attribuut:"
 
-#: ee-basic-front-end-login.php:254
+#: includes/ee-functions.php:271
 msgid "Restrict Dashboard Access"
 msgstr "Beperking van de toegang tot het Dashboard"
 
-#: ee-basic-front-end-login.php:256
+#: includes/ee-functions.php:273
+msgid "Select roles that should be denied access to the Dashboard."
+msgstr "Selecteer rollen die geen toegang mogen hebben tot het Dashboard."
+
+#: includes/ee-functions.php:273
 msgid ""
 "This setting is for when you want your users to be logged-in, but do not "
 "want them to have access to the Wordpress Dashboard."
@@ -105,37 +137,64 @@ msgstr ""
 "Deze instelling is voor wanneer u wilt dat uw gebruikers ingelogd zijn, maar "
 "niet wilt dat ze toegang hebben tot het Wordpress Dashboard."
 
-#: ee-basic-front-end-login.php:267
-msgid ""
-"Checked roles will not see the Admin Bar or be allowed to access the "
-"Dashboard."
+#: includes/ee-functions.php:287
+msgid "Check all roles"
+msgstr "Alle rollen aanvinken"
+
+#: includes/ee-functions.php:287
+msgid "Check All"
+msgstr "Selecteer Alles"
+
+#: includes/ee-functions.php:288
+msgid "Uncheck all roles"
+msgstr "Deselecteer alle functies"
+
+#: includes/ee-functions.php:288
+msgid "Uncheck All"
+msgstr "Deselecteer Alles"
+
+#: includes/ee-functions.php:291
+msgid "Selected roles will not see the Admin Bar or access the Dashboard."
 msgstr ""
-"Gecontroleerde rollen zullen de Admin Bar niet zien of toegang krijgen tot "
-"het Dashboard."
+"Geselecteerde rollen zien de beheerbalk niet en hebben geen toegang tot het "
+"dashboard."
 
-#: ee-basic-front-end-login.php:272
-msgid "SAVE"
-msgstr "OPSLAAN"
+#: includes/ee-functions.php:295
+msgid "Logout Button"
+msgstr "Knop Afmelden"
 
-#: ee-basic-front-end-login.php:276
-msgid "Basic Front End Login"
-msgstr "Basis aanmelding voor de front-end"
+#: includes/ee-functions.php:299
+msgid "Show Logout Button"
+msgstr "Knop Afmelden tonen"
 
-#: ee-basic-front-end-login.php:276
+#: includes/ee-functions.php:303
+msgid ""
+"Show a \"Log Out\" button at the bottom-right corner of each page for logged-"
+"in users."
+msgstr ""
+"Toon een knop \"Afmelden\" in de rechterbenedenhoek van elke pagina voor "
+"ingelogde gebruikers."
+
+#: includes/ee-functions.php:310
+msgid "Save Settings"
+msgstr "Instellingen Opslaan"
+
+#: includes/ee-functions.php:310
+msgid "Save form settings"
+msgstr "Formulierinstellingen opslaan"
+
+#. Plugin Name of the plugin/theme
+#: includes/ee-functions.php:314
+msgid "Basic Front-End Login"
+msgstr "Basis voorinlogboeking"
+
+#: includes/ee-functions.php:315
 msgid "Version"
 msgstr "Versie"
 
-#: ee-basic-front-end-login.php:276
+#: includes/ee-functions.php:315
 msgid "Plugin by"
 msgstr "Plugin door"
-
-#: ee-basic-front-end-login.php:277
-msgid "Please donate if you find this plugin useful."
-msgstr "Doneer alstublieft als u deze plugin nuttig vindt."
-
-#. Plugin Name of the plugin/theme
-msgid "Basic Front-End Login"
-msgstr "Basis voorinlogboeking"
 
 #. Plugin URI of the plugin/theme
 msgid "https://simplefilelist.com/basic-front-end-login/"
@@ -156,3 +215,18 @@ msgstr "Mitchell Bennis"
 #. Author URI of the plugin/theme
 msgid "https://elementengage.com"
 msgstr "https://elementengage.com"
+
+#~ msgid "Default Login Redirect"
+#~ msgstr "Standaard login redirect"
+
+#~ msgid "After login, go to this page."
+#~ msgstr "Ga na het inloggen naar deze pagina."
+
+#~ msgid "SAVE"
+#~ msgstr "OPSLAAN"
+
+#~ msgid "Basic Front End Login"
+#~ msgstr "Basis aanmelding voor de front-end"
+
+#~ msgid "Please donate if you find this plugin useful."
+#~ msgstr "Doneer alstublieft als u deze plugin nuttig vindt."

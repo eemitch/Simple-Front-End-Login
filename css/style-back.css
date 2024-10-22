@@ -2,100 +2,156 @@
 	width: 90%;
 	padding-top: 15px;
 	font-size: 110%;
+	margin: 0 auto; /* Center the form */
 }
 
 #eeBFEL_Settings h1 {
 	border-bottom: 1px solid #666;
+	margin-bottom: 20px;
 }
 
 #eeBFEL_Settings fieldset {
 	margin-bottom: 15px;
 	border: 1px solid #868686;
 	padding: 20px;
-	padding-top: 10px;
 	background-color: #e0e0e0;
 }
 
+/* Align labels and inputs using flexbox */
 #eeBFEL_Settings label {
-	float: left;
-	clear: left;
+	display: inline-block;
+	max-width: 200px; /* Consistent width for form layout */
 	text-align: right;
-	margin-right: .5em;
+	margin-right: 10px;
 	padding: 4px;
-	margin-bottom: .25em;
 	background: #d9d9d9;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: #5a5a5a;
-	border-right-width: 1px;
-	border-right-style: solid;
-	border-right-color: #5a5a5a;
+	border-bottom: 1px solid #5a5a5a;
+	border-right: 1px solid #5a5a5a;
 }
 
-#eeBFEL_Settings input[type=checkbox] {
-	width: 20px; /* This ensures the checkbox remains square */
-	height: 20px; /* This ensures the checkbox remains square */
-	margin-left: 10px;
+#eeBFEL_Settings p {
+	display: flex; /* Use flexbox to align inputs and buttons */
+	align-items: center;
+	margin-bottom: 15px;
 }
 
-#eeBFEL_Settings label.eeBFEL_DenyRoleCheck {
-	width: auto; /* Allow the label to expand with its text */
-	clear: none;
-	margin: 0 15px 15px 0;
-	display: flex; /* Set this label as a flex container */
-	align-items: center; /* Center the checkbox vertically */
-}
-
-
-
- 
-#eeBFEL_Settings input[type=url] {
-	float: left;
-	width: 64%;
-	margin-bottom: 15px; /* Added space below redirect input */
-}
-
-/* Make the copy-to-clipboard form span the whole width */
+/* Shortcode and Button */
 #eeBFEL_Shortcode {
-	float: left;
 	border: none;
 	background-color: #f7f7f7;
 	color: #333;
 	padding: 5px;
 	font-weight: bold;
-	width: 75%; /* Adjust this value as needed */
+	width: 75%; /* Adjust width for layout */
+	margin-right: 10px;
 }
 
 #eeBFEL_CopyShortcode {
-	float: left;
 	background-color: #0073aa;
 	border: none;
 	color: #fff;
-	padding: 5px 5px; /* Reduced padding */
+	padding: 6px 12px; /* Increased padding */
 	cursor: pointer;
-	width: 20%; /* Slightly increased width */
-	margin-left: 1%; /* Space between input and button */
+	width: auto; /* Adjusted to fit content */
 }
-
 
 #eeBFEL_CopyShortcode:hover {
 	background-color: #0071a1;
 }
 
+/* URL Input */
+#eeBFEL_Settings input[type=url] {
+	width: 64%;
+	margin-bottom: 15px;
+	float: left;
+}
+
+#eeBFEL_Settings label[for="eeBFEL_Redirect"] {
+	margin-right: 15px; /* Added space to the left of the redirect label */
+}
+
+/* Checkbox Styling */
+#eeBFEL_Settings input[type=checkbox] {
+	width: 20px; /* Ensures checkbox remains square */
+	height: 20px;
+	margin-left: 10px;
+}
+
+/* Role Checkboxes */
+#eeBFEL_Settings label.eeBFEL_DenyRoleCheck {
+	width: auto;
+	margin: 0 15px 15px 0;
+	display: inline-flex; /* Flexbox for checkbox and label */
+	align-items: center;
+}
+
+/* Check/Uncheck buttons */
+#eeBFEL_Settings #eeBFEL_checkAll,
+#eeBFEL_Settings #eeBFEL_uncheckAll {
+	margin-right: 15px; /* Add space between the buttons */
+	margin-bottom: 15px; /* Add space below buttons */
+}
+
+/* Submit Button */
 #eeBFEL_Save {
 	display: block;
-	margin: 10px auto;
-	padding: 6px 50px;
+	margin: 20px auto;
+	padding: 10px 50px;
 	font-size: 130%;
+	background-color: #0073aa;
+	color: #fff;
+	border: none;
+	cursor: pointer;
 }
 
+#eeBFEL_Save:hover {
+	background-color: #005a8c;
+}
+
+/* Footer */
 #eeBFEL_Footer p {
+	display: block;
 	text-align: center;
+	margin-top: 20px; /* Added space above the footer */
+	padding-top: 10px; /* Added padding to separate it more */
 }
 
+/* Notes */
 .eeNote {
 	clear: both;
+	margin-top: 20px;
 	margin-bottom: 30px;
 	margin-left: 4%;
 	font-style: italic;
+	font-size: 90%;
+	color: #666;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+	#eeBFEL_Settings {
+		width: 100%;
+	}
+
+	#eeBFEL_Settings label {
+		width: 100%;
+		text-align: left;
+		margin-bottom: 10px;
+	}
+
+	#eeBFEL_Settings input[type=url],
+	#eeBFEL_Shortcode {
+		width: 100%;
+		margin-bottom: 10px;
+	}
+
+	#eeBFEL_CopyShortcode {
+		width: 100%;
+		margin: 10px 0;
+	}
+
+	#eeBFEL_Save {
+		width: 100%;
+		padding: 15px;
+	}
 }

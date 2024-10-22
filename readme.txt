@@ -1,11 +1,11 @@
-=== Simple Front-End Login ===
+=== Basic Front-End Login ===
 Contributors: eemitch
 Donate link: https://elementengage.com/shop/plugin-donation/
-Tags: user login, login form, login redirect, no Admin bar, no dashboard
+Tags: user login, login form, login redirect, no Admin bar, logout button
 Requires at least: 5.0
-Tested up to: 6.3
+Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 1.3.1
+Stable tag: 2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -18,7 +18,7 @@ Adds a basic front-end login for to any page, post or widget and redirects to th
 
 To display the login form, place this shortcode on any page, post, or widget: *[eeBFEL]*
 
-After the user has logged in, they will be redirected to your home page or the URL you define in the plugin settings.
+After the user has logged in, they will be redirected to your home page or the URL you define in the plugin settings. You can also optionaly display a logout button at the bottom-right of each page.
 
 
 ##Redirect After Login
@@ -34,6 +34,10 @@ In the plugin settings you can optionally select roles that you want to deny bac
 
 Even if you don't need a login form, this can add an extra measure of security to your website by denying back-end access to all roles except Administrators.
 
+
+##NEW - Show a Logout Button
+
+Optionally show a small logout button on the bottom-right of each page if the user is logged in. Logging out returns the user to the home page.
 
 == Installation ==
  
@@ -68,14 +72,16 @@ If users return to the login page, a "Log Out" link will appear. You can also ad
 
 == Upgrade Notice ==
 
-* 1.3.1 - Major Refactor
+* 2.1 - Major Refactor
  
 == Changelog ==
 
-= 1.3.1 =
-* Improved file structure and many code improvements.
-* Security Improvements
-
+= 2.1 =
+* Added global logout button option
+* Admin UI improvements
+* Improved file structure and many code improvements
+* Accessability and security Improvements
+* Updated translations
 
 = 1.2.1 =
 * Added Copy-to-Clipboard function for the shortcode string
