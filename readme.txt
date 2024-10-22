@@ -5,7 +5,7 @@ Tags: user login, login form, login redirect, no Admin bar, no dashboard
 Requires at least: 5.0
 Tested up to: 6.3
 Requires PHP: 7.4
-Stable tag: 1.2.1
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
  
@@ -68,9 +68,14 @@ If users return to the login page, a "Log Out" link will appear. You can also ad
 
 == Upgrade Notice ==
 
-* 1.2.1 - Added
+* 1.3.1 - Major Refactor
  
 == Changelog ==
+
+= 1.3.1 =
+* Improved file structure and many code improvements.
+* Security Improvements
+
 
 = 1.2.1 =
 * Added Copy-to-Clipboard function for the shortcode string
