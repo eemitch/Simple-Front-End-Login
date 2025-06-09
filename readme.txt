@@ -80,7 +80,7 @@ If users return to the login page, a "Log Out" link will appear. You can also ad
 * Added global logout button option
 * Admin UI improvements
 * Improved file structure and many code improvements
-* Accessability and security Improvements
+* Accessibility and security Improvements
 * Updated translations
 
 = 1.2.1 =
